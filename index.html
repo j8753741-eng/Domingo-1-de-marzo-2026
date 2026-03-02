@@ -5,109 +5,132 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mi vida</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 body{
     margin:0;
     padding:0;
-    background: radial-gradient(circle at top, #1a001f, #000000 70%);
-    font-family: 'Playfair Display', serif;
-    color:#f5e6ff;
+    background: linear-gradient(135deg,#140014,#000000 70%);
+    font-family: 'Cormorant Garamond', serif;
+    color:#f8eaff;
     overflow-x:hidden;
 }
 
-/* Contenedor principal */
+/* Corazones flotando */
+.corazones span{
+    position:fixed;
+    bottom:-50px;
+    font-size:20px;
+    color:rgba(255,105,180,0.25);
+    animation: flotar 15s linear infinite;
+}
+
+@keyframes flotar{
+    0%{transform:translateY(0) scale(1); opacity:0;}
+    20%{opacity:1;}
+    100%{transform:translateY(-110vh) scale(1.5); opacity:0;}
+}
+
+/* Contenedor */
 .carta{
     max-width:900px;
-    margin:60px auto;
-    padding:60px;
-    background:rgba(20, 0, 30, 0.85);
-    border-radius:25px;
-    box-shadow:0 0 40px rgba(186,85,211,0.4);
-    backdrop-filter: blur(8px);
+    margin:80px auto;
+    padding:70px;
+    background:rgba(30,0,40,0.85);
+    border-radius:30px;
+    box-shadow:0 0 60px rgba(255,0,255,0.25);
+    backdrop-filter: blur(10px);
     position:relative;
 }
 
-/* Título con neón */
+/* Título elegante con brillo */
 .titulo{
     text-align:center;
-    font-size:70px;
-    font-family: 'Great Vibes', cursive;
-    color:#fff;
+    font-size:65px;
+    letter-spacing:2px;
     margin-bottom:40px;
+    color:#fff;
     text-shadow:
-        0 0 10px #ff4dff,
-        0 0 20px #ff4dff,
-        0 0 40px #cc00ff,
-        0 0 80px #9900cc;
+        0 0 10px #ff66ff,
+        0 0 25px #cc00ff,
+        0 0 50px #9900cc;
 }
 
-/* Texto carta */
+/* Texto */
 .texto{
-    font-size:22px;
-    line-height:1.9;
+    font-size:23px;
+    line-height:2;
     text-align:justify;
     white-space:pre-line;
 }
 
-/* Separador romántico */
-.separador{
-    text-align:center;
-    font-size:30px;
-    margin:40px 0;
-    color:#d896ff;
+/* Botón música */
+.boton-musica{
+    display:block;
+    margin:60px auto 40px auto;
+    padding:15px 40px;
+    font-size:18px;
+    border-radius:40px;
+    border:none;
+    cursor:pointer;
+    background:linear-gradient(45deg,#ff00cc,#6600ff);
+    color:white;
+    box-shadow:0 0 20px rgba(255,0,255,0.6);
+    transition:0.3s;
 }
 
-/* Iframe canción */
-.musica{
-    text-align:center;
-    margin-top:50px;
+.boton-musica:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 35px rgba(255,0,255,0.9);
 }
 
 iframe{
+    display:none;
+    margin:auto;
     width:100%;
-    max-width:600px;
+    max-width:650px;
     height:315px;
     border-radius:20px;
-    box-shadow:0 0 30px rgba(255,0,255,0.5);
+    box-shadow:0 0 40px rgba(255,0,255,0.4);
 }
 
-/* Frase final neon */
+/* Frase final neon progresivo */
 .frase-final{
-    margin-top:60px;
+    margin-top:70px;
     text-align:center;
-    font-size:28px;
-    font-family: 'Great Vibes', cursive;
-    color:#fff;
-    text-shadow:
-        0 0 10px #00ffff,
-        0 0 20px #00ffff,
-        0 0 40px #0099ff,
-        0 0 80px #0066ff;
-    animation:brillo 2.5s infinite alternate;
+    font-size:32px;
+    letter-spacing:2px;
+    color:#ffffff;
+    opacity:0;
+    animation: encender 4s forwards;
 }
 
-@keyframes brillo{
-    from{opacity:0.8;}
-    to{opacity:1;}
+@keyframes encender{
+    0%{
+        opacity:0;
+        text-shadow:none;
+    }
+    50%{
+        opacity:0.5;
+        text-shadow:0 0 5px #00ffff;
+    }
+    100%{
+        opacity:1;
+        text-shadow:
+            0 0 10px #00ffff,
+            0 0 20px #00ffff,
+            0 0 40px #0099ff,
+            0 0 80px #0066ff;
+    }
 }
 
-/* Pequeñas partículas brillantes */
-body::before{
-    content:"";
-    position:fixed;
-    width:100%;
-    height:100%;
-    background-image: radial-gradient(white 1px, transparent 1px);
-    background-size:50px 50px;
-    opacity:0.05;
-    animation:mover 60s linear infinite;
-}
-
-@keyframes mover{
-    from{background-position:0 0;}
-    to{background-position:1000px 1000px;}
+.separador{
+    text-align:center;
+    margin:40px 0;
+    font-size:25px;
+    color:#d9aaff;
 }
 
 </style>
@@ -115,18 +138,26 @@ body::before{
 
 <body>
 
-<div class="carta">
+<div class="corazones">
+<span style="left:10%; animation-delay:0s;">❤</span>
+<span style="left:25%; animation-delay:3s;">❤</span>
+<span style="left:40%; animation-delay:6s;">❤</span>
+<span style="left:55%; animation-delay:9s;">❤</span>
+<span style="left:70%; animation-delay:12s;">❤</span>
+<span style="left:85%; animation-delay:15s;">❤</span>
+</div>
 
-  <div class="musica">
-<iframe src="https://www.youtube.com/embed/B6vwo7pZKow" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
+<button class="boton-musica" onclick="mostrarMusica()">Reproducir nuestra canción ✨</button>
+
+<iframe id="player"
+src="https://www.youtube.com/embed/B6vwo7pZKow?autoplay=1"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
 </iframe>
-  </div>
 
-  <div class="separador">✦ ✧ ✦</div>
+<div class="carta">
 
 <div class="titulo">MI VIDA HERMOSA 💜</div>
 
@@ -163,5 +194,11 @@ Quiero que sepas que absolutamente siempre voy a estar para ti y sin importar qu
 
 </div>
 
+<script>
+function mostrarMusica(){
+    document.getElementById("player").style.display="block";
+}
+</script>
+
 </body>
-  </html>
+</html>
